@@ -3,20 +3,21 @@
   "adminAccount": "admin@admin.com",
   "timeout":120000,
   "db": {
-    "servername": "127.0.0.1",
-    "DATABASE": "yapi",
-    "port": 27017,
-    "user": "test1",
-    "pass": "test1",
-    "authSource": ""
+    "connectString":"mongodb+srv://xxx_user:xxx_pawwrod@dev-group.jpkntqk.mongodb.net/yapi?appName=xxx-group&retryWrites=true&w=majority&authSource=admin&tls=true&minHeartbeatFrequencyMS=30000&connectTimeoutMS=10000&socketTimeoutMS=45000"
+    // "servername": "127.0.0.1",
+    // "DATABASE": "yapi",
+    // "port": 27017,
+    // "user": "test1",
+    // "pass": "test1",
+    // "authSource": ""
   },
   "mail": {
     "enable": true,
-    "host": "smtp.163.com",
+    "host": "smtp.xx.com",
     "port": 465,
-    "from": "***@163.com",
+    "from": "***@xx.com",
     "auth": {
-      "user": "***@163.com",
+      "user": "***@xx.com",
       "pass": "*****"
     }
   }

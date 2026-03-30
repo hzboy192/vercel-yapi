@@ -79,7 +79,7 @@ module.exports = {
           defaultQuery.plugins.push(['import', { libraryName: 'antd' }]);
           return defaultQuery;
         },
-        exclude: isWin ? /(tui-editor|node_modules\\(?!_?(yapi-plugin|json-schema-editor-visual)))/ : /(tui-editor|node_modules\/(?!_?(yapi-plugin|json-schema-editor-visual)))/
+        exclude: isWin ? /(tui-editor|node_modules\\(?!.*(_?(yapi-plugin|json-schema-editor-visual))))/ : /(tui-editor|node_modules\/(?!.*(_?(yapi-plugin|json-schema-editor-visual))))/
       }
     }
   ],
@@ -147,6 +147,16 @@ module.exports = {
         baseConfig.output.prd.filename = '[name]@[chunkhash][ext]';
 
         baseConfig.module.noParse = /node_modules\/jsondiffpatch\/public\/build\/.*js/;
+        
+        baseConfig.node = {
+          fs: 'empty',
+          net: 'empty',
+          tls: 'empty',
+          dns: 'empty',
+          child_process: 'empty',
+          readline: 'empty'
+        };
+
         baseConfig.module.loaders.push({
           test: /\.less$/,
           loader: ykit.ExtractTextPlugin.extract(
@@ -179,12 +189,13 @@ module.exports = {
 
         baseConfig.module.preLoaders.push({
           test: /\.(js|jsx)$/,
-          exclude: /tui-editor|node_modules|google-diff.js/,
+          exclude: /tui-editor|node_modules|google-diff.js|server/,
           loader: 'eslint-loader'
         });
 
         baseConfig.module.preLoaders.push({
           test: /\.json$/,
+          exclude: /server|config\.json/,
           loader: 'json-loader'
         });
 
@@ -202,6 +213,11 @@ module.exports = {
             new this.webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(zh-cn|en-gb)$/)
           );
         }
+        
+        baseConfig.plugins.push(
+          new this.webpack.IgnorePlugin(/swagger-client|nodemailer|fs-extra|graceful-fs|jsonfile/)
+        );
+        
         return baseConfig;
       }
     };

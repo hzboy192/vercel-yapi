@@ -1,5 +1,34 @@
 ## YApi  可视化接口管理平台
 
+该项目是基于[YMFE/yapi](https://github.com/YMFE/yapi)的一个分支，主要升级了软件版版本，支持mongodb+srv 链接mongodb，如MongoDB Atlas数据库。
+
+```json
+{
+  "port": "3000",
+  "adminAccount": "admin@admin.com",
+  "timeout":120000,
+  "db": {
+    "connectString":"mongodb+srv://xxx_user:xxx_pawwrod@dev-group.jpkntqk.mongodb.net/yapi?appName=xxx-group&retryWrites=true&w=majority&authSource=admin&tls=true&minHeartbeatFrequencyMS=30000&connectTimeoutMS=10000&socketTimeoutMS=45000"
+    // "servername": "127.0.0.1",
+    // "DATABASE": "yapi",
+    // "port": 27017,
+    // "user": "test1",
+    // "pass": "test1",
+    // "authSource": ""
+  },
+  "mail": {
+    "enable": true,
+    "host": "smtp.xx.com",
+    "port": 465,
+    "from": "***@xx.com",
+    "auth": {
+      "user": "***@xx.com",
+      "pass": "*****"
+    }
+  }
+}
+```
+
 体验地址：
 
 [http://yapi.smart-xwork.cn/](http://yapi.smart-xwork.cn/)
